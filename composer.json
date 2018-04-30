@@ -1,0 +1,45 @@
+{
+    "name": "fruitstudios/selectit",
+    "description": "Front-end asset upload for fields, volumes and folders.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "asset uploader",
+        "front end",
+        "selectit"
+    ],
+    "support": {
+        "docs": "https://github.com/fruitstudios/craft-selectit/blob/master/README.md",
+        "issues": "https://github.com/fruitstudios/craft-selectit/issues"
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Fruit Studios",
+            "homepage": "http://fruitstudios.co.uk"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.2"
+    },
+    "autoload": {
+        "psr-4": {
+          "fruitstudios\\selectit\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Selectit",
+        "handle": "selectit",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/fruitstudios/craft-selectit/master/CHANGELOG.md",
+        "class": "fruitstudios\\selectit\\Selectit",
+        "components": {
+            "selectit": "fruitstudios\\selectit\\services\\SelectitService"
+        }
+    }
+}

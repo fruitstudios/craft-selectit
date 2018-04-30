@@ -1,0 +1,78 @@
+{% import "selectit/_macros" as macros %}
+
+{% set uploader = uploader ?? false %}
+
+{% if uploader and not uploader.hasErrors() %}
+
+    {% set classes = [
+        'selectit--uploader',
+        'selectit--layout-' ~ uploader.layout,
+        uploader.enableReorder ? 'selectit--reorderEnabled' : null,
+        uploader.customClass ? uploader.customClass : null,
+    ]|filter|join(' ') %}
+
+    {# TODO: Assets - if assets|length is greater than limit, should i remove assets?  #}
+
+    <div id="{{ uploader.id }}" class="{{ classes }}">
+
+        <div class="selectit--errors selectit--isHidden"></div>
+
+        {% if uploader.name %}
+            <input type="hidden" name="{{ uploader.name|replace({'[]': ''}) }}" value="" />
+        {% endif %}
+
+        <ul id="{{ uploader.id }}Assets" class="selectit--assets">
+
+            {% for asset in uploader.assets %}
+
+                {{ macros.preview({
+                    asset: asset,
+                    name: uploader.name,
+                    transform: uploader.transform,
+                    enableReorder: uploader.enableReorder,
+                    enableRemove: uploader.enableRemove,
+                    preview: uploader.preview
+                }) }}
+
+            {% endfor %}
+
+        </ul>
+
+        <div class="selectit--controls{{ uploader.limit and uploader.assets|length >= uploader.limit ? ' selectit--isHidden' }}">
+
+                <div class="selectit--controls-inner">
+
+                    <a href="javascript:;" class="selectit--upload">
+                       {#  {{ macros.icon({ icon: 'upload' }) }} #}
+                        <span class="selectit--label">{{ uploader.selectText }}</span>
+                        {# {% if uploader.enableDropToUpload %}
+                            <span class="selectit--or">{{ 'or'|t('selectit') }}</span>
+                            <span class="selectit--btn">{{ uploader.dropText }}</span>
+                        {% endif %} #}
+                    </a>
+
+                    <input type="file" name="selectitAssetInput" style="display:none;"{{ not uploader.limit or uploader.limit > 1 ? ' multiple' }} />
+
+                </div>
+            </div>
+
+        <div class="selectit--preload selectit--isHidden"></div>
+
+    </div>
+
+{% else %}
+
+    <div class="selectit--notice">
+        {% if uploader.hasErrors() %}
+            <p>{{ 'Uploader Not Ready'|t('selectit') }}</p>
+            <ul class="selectit--noticeErrors">
+                {% for error in uploader.getErrors() %}
+                    <li>{{ error|filter|join(', ') }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>{{ 'Uploader Not Found'|t('selectit') }}</p>
+        {% endif %}
+    </div>
+
+{% endif %}

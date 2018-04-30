@@ -1,0 +1,7 @@
+{% macro icon(config) %}
+	{% include "selectit/_macros/_icon" with (config ?? {}) only %}
+{% endmacro %}
+
+{% macro preview(config) %}
+	{% include "selectit/_macros/_preview" with (config ?? {}) only %}
+{% endmacro %}

@@ -1,0 +1,223 @@
+/* Uploader */
+
+.selectit--uploader {
+    position: relative;
+}
+
+.selectit--assets {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Asset */
+.selectit--asset {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    position: relative;
+    min-height: 80px;
+    overflow: hidden;
+}
+
+.selectit--reorderEnabled .selectit--asset:hover {
+    cursor: all-scroll;
+}
+
+.selectit--assetPreview-background {
+}
+.selectit--assetPreview-image {
+}
+.selectit--assetPreview-file {
+}
+
+.selectit--icon {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+
+.selectit--filename {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.selectit--fileIcon {
+    height: 80px;
+    width: 80px;
+    margin-right: 8px;
+}
+
+.selectit--asset img {
+    width: 80px;
+    height: 80px;
+    margin-right: 8px;
+}
+
+.selectit--remove {
+    margin: 8px;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+}
+
+.selectit--remove svg {
+    width: 16px;
+    height: 16px;
+}
+
+.selectit--handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+}
+
+.selectit--assetDragging {
+}
+.selectit--assetChosen {
+    opacity: 0.5;
+}
+.selectit--assetGhost {
+    opacity: 1;
+}
+
+/* Asset Placeholder */
+.selectit--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    position: relative;
+    min-height: 80px;
+    overflow: hidden;
+}
+.selectit--placeholderCancel {
+    margin: 8px;
+    cursor: pointer;
+    order: 3;
+}
+.selectit--placeholderProgress {
+    z-index: 90;
+    order: 1;
+    margin: 8px;
+}
+.selectit--placeholderError {
+    color: red;
+    z-index: 90;
+    order: 2;
+    margin: 8px;
+}
+
+.selectit--asset img {
+    display: block;
+}
+
+/* Controls */
+.selectit--controls {
+    width: 100%;
+    display: inline-block;
+    padding: 24px;
+}
+
+.selectit--upload {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+}
+.selectit--label {
+    display: inline-block;
+    padding: 12px 20px;
+    color: white;
+    background-color: #000000;
+}
+.selectit--or {
+}
+.selectit--btn {
+}
+
+/* Errors */
+.selectit--errors {
+    color: red;
+}
+
+/* Progress */
+.selectit--progress {
+    display: none;
+}
+
+/* Utilities */
+.selectit--isHidden {
+    display: none !important;
+}
+
+.selectit--isDragging {
+    opacity: 0.5;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.selectit--isLoading:before {
+    content: "";
+    background: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.selectit--isLoading:after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: -15px;
+    border-radius: 50%;
+    border: 3px solid #000000;
+    border-top-color: transparent !important;
+    animation: loading 0.7s linear infinite;
+}
+
+/* Notice */
+.selectit--notice {
+    border: 1px solid #333;
+    background: #f3f3f3;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.selectit--noticeErrors {
+    list-style: none;
+    color: orange;
+    padding: 0;
+    margin: 0;
+}
+
+/* Preload */
+.selectit--preload {
+    display: none;
+    visibility: hidden;
+}
